@@ -2,11 +2,6 @@
 
 A zero-dependency Python script that performs automated incremental backups of a directory on a configurable interval. Runs on any vanilla Linux/Unix system with Python 3.6+.
 
-![Python](https://img.shields.io/badge/Python-3.6%2B-blue?logo=python&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20BSD-lightgrey)
-![Dependencies](https://img.shields.io/badge/Dependencies-None-brightgreen)
-
 ---
 
 ## Features
