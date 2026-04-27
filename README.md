@@ -28,6 +28,17 @@ Readability
 Scalability
 Usability
 Cost
+
+
+
+
+I need you to act as my Lead Developer. I will provide the requirements below. When generating the solution, please:
+1. Use a modular and clean code structure.
+2. Include robust error handling (try-except blocks) and helpful logging/print statements.
+3. Add concise comments and a brief docstring explaining how to run the script.
+4. Ensure the code is 'production-ready' rather than just a quick snippet.
+5. If there are multiple ways to solve it, choose the most efficient/standard approach.
+6. Use only Python default/built-in libraries (no pip installs).
  
 
 Use any of the following languages:
