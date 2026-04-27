@@ -26,7 +26,7 @@ A zero-dependency Python script that performs automated incremental backups of a
 
 ```bash
 # Download
-curl -O https://raw.githubusercontent.com/yourusername/incremental-backup/main/backup.py
+curl -O https://github.com/husbal1/script-challenge/blob/main/backup.py
 chmod +x backup.py
 
 # Run (backs up every 60 seconds by default)
