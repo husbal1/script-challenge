@@ -1,73 +1,41 @@
-# script-challenge
-
-Create a production-ready script that will perform regular backups of a specified directory to a backup directory. The script should implement the following functionality:
-
-Create a backup of the specified directory to a backup directory every minute.
-All backups should be incremental.
-Maintain the directory structure of the original directory in the backup directory.
-Keep a log of each backup operation including:
-Timestamp of the backup
-Files that were copied
-Files that were updated
-Files that were deleted (if any)
- 
-
-Minimal requirements:
-
-For each of these events, it should print a message to the screen.
-The script must be portable, execute and compile (if language requires) on a vanilla Linux/Unix environment without network connectivity.
- 
-
-Important criteria that will be evaluated:
-
-Algorithm
-Portability
-User friendliness
-Maintainability
-Readability
-Scalability
-Usability
-Cost
 
 
 
+# 🔄 Incremental Directory Backup
 
-I need you to act as my Lead Developer. I will provide the requirements below. When generating the solution, please:
-1. Use a modular and clean code structure.
-2. Include robust error handling (try-except blocks) and helpful logging/print statements.
-3. Add concise comments and a brief docstring explaining how to run the script.
-4. Ensure the code is 'production-ready' rather than just a quick snippet.
-5. If there are multiple ways to solve it, choose the most efficient/standard approach.
-6. Use only Python default/built-in libraries (no pip installs).
- 
+A zero-dependency Python script that performs automated incremental backups of a directory on a configurable interval. Runs on any vanilla Linux/Unix system with Python 3.6+.
 
-Use any of the following languages:
+![Python](https://img.shields.io/badge/Python-3.6%2B-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20BSD-lightgrey)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-brightgreen)
 
-Go
-Python
-Bash
+---
+
+## Features
+
+- **Incremental** — only new, modified, or deleted files are processed each cycle
+- **Directory structure preservation** — full tree mirrored, including empty directories
+- **Two-tier change detection** — fast `size + mtime` check, SHA-256 fallback only when needed
+- **Deletion tracking** — files and directories removed from source are cleaned from backup
+- **Atomic state file** — crash-safe manifest via `tmp` then `os.replace()`
+- **Graceful shutdown** — `Ctrl+C` finishes the current cycle before exiting
+- **Log rotation** — capped at 50 MB (10 MB x 5 rotations) to prevent disk fill
+- **Detailed logging** — timestamped logs to stderr, optional log file, and summary to stdout
+
+---
+
+## Quick Start
+
+```bash
+# Download
+curl -O https://raw.githubusercontent.com/yourusername/incremental-backup/main/backup.py
+chmod +x backup.py
+
+# Run (backs up every 60 seconds by default)
+python3 backup.py /path/to/source /path/to/backup
+```
+
+Stop anytime with Ctrl+C.
 
 
-
-
-# [Project Name / Challenge Title]
-
-## 🎯 Objective
-[One sentence description of what the script does]. 
-Designed for **zero-dependency environments** using only Python Standard Libraries.
-
-## 🚀 Key Features
-* **Production-Ready:** Includes robust logging and error handling.
-* **Portable:** Compatible with vanilla Linux/Unix (Python 3.x).
-* **Efficient:** Optimized for [Polling/Event-driven/Memory] performance.
-* **SRE Mindset:** Focuses on idempotency and graceful exits.
-
-## 🛠 Tech Stack
-* **Language:** Python 3.x
-* **Standard Libs used:** `os`, `sys`, `logging`, `argparse`, [Add Others Tomorrow]
-
-## 📦 Installation & Usage
-1. **Clone the repo:**
-   ```bash
-   git clone [https://github.com/hballout/script-challenge.git](https://github.com/hballout/script-challenge.git)
-   cd script-challenge
