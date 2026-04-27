@@ -1,6 +1,3 @@
-
-
-
 # 🔄 Incremental Directory Backup
 
 A zero-dependency Python script that performs automated incremental backups of a directory on a configurable interval. Runs on any vanilla Linux/Unix system with Python 3.6+.
@@ -55,25 +52,28 @@ usage: backup.py [-h] [-i SEC] [-l FILE] [-v] source backup
 Examples:
 
 # Custom interval (every 2 minutes) with log file
+```bash
 python3 backup.py /var/www/html /backup/www --interval 120 --log-file /var/log/backup.log
-
+```
 # Verbose mode
+```bash
 python3 backup.py ./src ./src_backup -v
-
+```
 # Run in background
+```bash
 nohup python3 backup.py /data /backup/data --log-file /var/log/backup.log &
-
+```
 
 ## How It Works
 Each cycle runs six phases:
 
-Mirror directories — create any new subdirectories from source
-Copy new files — files not yet in backup
-Update changed files — detected via size/mtime, confirmed via SHA-256 when ambiguous
-Remove deleted files — files no longer in source
-Remove deleted directories — deepest first to avoid conflicts
-Save manifest — atomic write of .backup_manifest.json tracking all file metadata
-Unchanged files are skipped entirely after a single O(1) stat() call.
+- Mirror directories — create any new subdirectories from source
+- Copy new files — files not yet in backup
+- Update changed files — detected via size/mtime, confirmed via SHA-256 when ambiguous
+- Remove deleted files — files no longer in source
+- Remove deleted directories — deepest first to avoid conflicts
+- Save manifest — atomic write of .backup_manifest.json tracking all file metadata
+- Unchanged files are skipped entirely after a single O(1) stat() call.
 
 ## Sample Output
 
